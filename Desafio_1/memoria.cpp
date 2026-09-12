@@ -14,3 +14,11 @@ int calcularbytes(int filas, int columnas)
     }
     return cantidadBytes;
 }
+
+unsigned char* reservarMemoria(int filas, int columnas)
+{
+    int cantidadBytes = calcularbytes(filas, columnas);
+    unsigned char* memoria = new unsigned char[cantidadBytes];
+
+    return memoria;
+}
