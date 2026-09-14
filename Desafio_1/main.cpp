@@ -65,7 +65,7 @@ int main()
     if(hayCombinaciones(marcas, filas,columnas))
     {
         int eliminadas = eliminarMarcadas(memoria,filas,columnas,marcas);
-        cout<<"se eliminaron "<<eliminadas << "fichas por combinacion. "<<endl;
+        cout<<"se eliminaron "<<eliminadas << " fichas por combinacion. "<<endl;
         mostrarTablero(memoria,filas,columnas);
     }
 

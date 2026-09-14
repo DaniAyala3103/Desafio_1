@@ -52,3 +52,31 @@ void mostrarTablero(unsigned char *memoria, int filas, int columnas)
         cout <<endl;
     }
 }
+
+void reorganizarTablero(unsigned char *memoria, int filas, int columnas)
+{
+    for (int c=0; c<columnas; c++)
+    {
+        int destino = filas -1;         //inicia en la ultima fila (la mas baja)
+        for (int f=filas-1; f>=0;f--)
+        {
+            unsigned char valor = leerFicha(memoria,f,c,columnas);
+
+            if(valor<=5)    //fichas validas, no vacias
+            {
+                if(f!=destino)
+                {
+                    escribirFicha(memoria,destino,c,columnas,valor);
+                    escribirFicha(memoria,f,c,columnas,6);  //va dejando vacio el lugar viejo
+                }
+                destino--;
+            }
+        }
+        //va rewllenando con fichas nuevas todo lo que va quedando vacio arriba
+        while (destino >=0)
+        {
+            escribirFicha(memoria, destino, c,columnas,generarFichaAleatoria());
+            destino--;
+        }
+    }
+}
