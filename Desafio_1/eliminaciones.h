@@ -1,10 +1,7 @@
 #ifndef ELIMINACIONES_H
 #define ELIMINACIONES_H
 
-class eliminaciones
-{
-public:
-    eliminaciones();
-};
+void eliminarFicha(unsigned char *memoria, int fila, int columna, int columnas);
+
 
 #endif // ELIMINACIONES_H
