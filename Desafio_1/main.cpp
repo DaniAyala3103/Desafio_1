@@ -1,29 +1,19 @@
-#include <iostream>
 #include "memoria.h"
 #include "fichas.h"
-using namespace std;
+#include "tablero.h"
+#include <cstdlib>
+#include <ctime>
 
 int main()
 {
-    // int filas = 3, columnas = 3;
-    // unsigned char* memoria = reservarMemoria(filas, columnas);
+    srand(time(NULL));
 
-    // // Prueba caso simple
-    // escribirFicha(memoria, 0, 0, columnas, 5);
-    // unsigned char r1 = leerFicha(memoria, 0, 0, columnas); // debería ser 5
+    int filas = 5, columnas = 5;
+    unsigned char* memoria = reservarMemoria(filas, columnas);
 
-    // // Prueba con varias fichas para forzar casos repartidos entre bytes
-    // for (int f = 0; f < filas; f++)
-    //     for (int c = 0; c < columnas; c++)
-    //         escribirFicha(memoria, f, c, columnas, (f+c) % 6); // valores 0-5
+    llenarTablero(memoria, filas, columnas);
+    mostrarTablero(memoria, filas, columnas);
 
-    // bool ok = true;
-    // for (int f = 0; f < filas; f++)
-    //     for (int c = 0; c < columnas; c++)
-    //         if (leerFicha(memoria, f, c, columnas) != (f+c) % 6)
-    //             ok = false;
-
-
-    // delete[] memoria;
-    // return 0;
+    delete[] memoria;
+    return 0;
 }
