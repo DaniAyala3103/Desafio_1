@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "combinaciones.h"
 
 using namespace std;
 
@@ -55,6 +56,24 @@ int main()
 
     cout<<"tablero despues de eliminar: "<<endl;
     mostrarTablero(memoria,filas,columnas);
+
+    //por acá vamos metiendo la deteccion y eliminacion de combinaciones
+    bool *marcas=crearMarcas(filas,columnas);
+    marcasHorizontales(memoria, filas,columnas,marcas);
+    marcasVerticales(memoria,filas,columnas,marcas);
+
+    if(hayCombinaciones(marcas, filas,columnas))
+    {
+        int eliminadas = eliminarMarcadas(memoria,filas,columnas,marcas);
+        cout<<"se eliminaron "<<eliminadas << "fichas por combinacion. "<<endl;
+        mostrarTablero(memoria,filas,columnas);
+    }
+
+    else
+    {
+        cout<<">>>No se generaron combinaciones."<<endl;
+    }
+    liberarMarcas(marcas);
 
     delete[] memoria;
     return 0;

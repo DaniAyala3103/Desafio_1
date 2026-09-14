@@ -1,5 +1,6 @@
 #include "combinaciones.h"
 #include "fichas.h"
+#include "eliminaciones.h"
 
 bool *crearMarcas(int filas, int columnas)
 {
@@ -70,3 +71,20 @@ void marcasVerticales(unsigned char *memoria, int filas, int columnas, bool *mar
     }
 }
 
+int eliminarMarcadas(unsigned char *memoria, int filas, int columnas, bool *marcas)
+{
+    int contador =0;
+    for (int f=0; f<filas;f++)
+    {
+        for(int c=0;c<columnas; c++)
+        {
+            if (marcas[f*columnas +c])
+            {
+                eliminarFicha(memoria,f,c,columnas);
+                contador++;
+
+            }
+        }
+    }
+    return contador;
+}
