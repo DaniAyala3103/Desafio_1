@@ -67,6 +67,11 @@ int main()
         int eliminadas = eliminarMarcadas(memoria,filas,columnas,marcas);
         cout<<"se eliminaron "<<eliminadas << " fichas por combinacion. "<<endl;
         mostrarTablero(memoria,filas,columnas);
+
+        reorganizarTablero(memoria, filas,columnas);
+        cout <<"tablero depues de reorganizar: "<<endl;
+        mostrarTablero(memoria,filas,columnas);
+
     }
 
     else
