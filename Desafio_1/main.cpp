@@ -57,28 +57,46 @@ int main()
     cout<<"tablero despues de eliminar: "<<endl;
     mostrarTablero(memoria,filas,columnas);
 
-    //por acá vamos metiendo la deteccion y eliminacion de combinaciones
+    //por acá vamos metiendo la deteccion, eliminacion y cascada de combinaciones
+    int cascadas=0;
+    bool primeraVez=true;
     bool *marcas=crearMarcas(filas,columnas);
-    marcasHorizontales(memoria, filas,columnas,marcas);
-    marcasVerticales(memoria,filas,columnas,marcas);
 
-    if(hayCombinaciones(marcas, filas,columnas))
+
+    while(true)
     {
+        for (int i=0; i<filas*columnas;i++)
+            marcas[i]=false;
+
+        marcasHorizontales(memoria, filas,columnas,marcas);
+        marcasVerticales(memoria,filas,columnas,marcas);
+
+        if(!hayCombinaciones(marcas, filas,columnas))
+            break;
+
         int eliminadas = eliminarMarcadas(memoria,filas,columnas,marcas);
-        cout<<"se eliminaron "<<eliminadas << " fichas por combinacion. "<<endl;
-        mostrarTablero(memoria,filas,columnas);
+        if(primeraVez)
+        {
+            cout<<"se eliminaron "<<eliminadas << " fichas por combinacion. "<<endl;
+            primeraVez =false;
+        }
+        else
+        {
+            cascadas++;
+            cout <<"cascada " <<cascadas<<" : se eliminaron "<<eliminadas<< "fichas."<<endl;
+        }
 
         reorganizarTablero(memoria, filas,columnas);
         cout <<"tablero depues de reorganizar: "<<endl;
         mostrarTablero(memoria,filas,columnas);
-
     }
 
-    else
-    {
-        cout<<">>>No se generaron combinaciones."<<endl;
-    }
     liberarMarcas(marcas);
+
+    if(!primeraVez)
+        cout<<"Cascadas producidas: "<<cascadas<<endl;
+    else
+        cout<<">>>No se generaron combinaciones."<<endl;
 
     delete[] memoria;
     return 0;
