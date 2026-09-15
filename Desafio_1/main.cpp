@@ -83,7 +83,7 @@ int main()
         else
         {
             cascadas++;
-            cout <<"cascada " <<cascadas<<" : se eliminaron "<<eliminadas<< "fichas."<<endl;
+            cout <<"cascada " <<cascadas<<" : se eliminaron "<<eliminadas<< " fichas."<<endl;
         }
 
         reorganizarTablero(memoria, filas,columnas);
