@@ -98,6 +98,27 @@ int main()
     else
         cout<<">>>No se generaron combinaciones."<<endl;
 
+    int capacidadBytes = calcularbytes(filas,columnas);
+    cout <<endl<< ">>>Prueba: agregar fila en la posicion 2 <<<"<<endl;
+    memoria=agregarFila(memoria, filas,columnas, 2,&capacidadBytes);
+    filas++;
+    mostrarTablero(memoria,filas,columnas);
+
+    cout<<endl<<">>> prueba eliminar columna en la posicion 0 <<<"<<endl;
+    memoria=eliminarFila(memoria,filas,columnas,0,&capacidadBytes);
+    filas--;
+    mostrarTablero(memoria,filas,columnas);
+
+    cout<<endl<<">>>prueba agregar columnas en la posicion 3<<<"<<endl;
+    memoria=agregarColumna(memoria,filas,columnas,3,&capacidadBytes);
+    columnas++;
+    mostrarTablero(memoria,filas,columnas);
+
+    cout<<endl<<">>>Prueba eliminar columna en la posicion 3<<<"<<endl;
+    memoria=eliminarColumna(memoria,filas,columnas,3,&capacidadBytes);
+    columnas--;
+    mostrarTablero(memoria,filas,columnas);
+
     delete[] memoria;
     return 0;
 }
