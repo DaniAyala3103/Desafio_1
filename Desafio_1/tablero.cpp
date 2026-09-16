@@ -80,3 +80,20 @@ void reorganizarTablero(unsigned char *memoria, int filas, int columnas)
         }
     }
 }
+
+
+void mostrarTableroBinario(unsigned char *memoria, int filas, int columnas)
+{
+    for (int f=0; f<filas; f++)
+    {
+        for(int c=0;c<columnas; c++)
+        {
+            unsigned char valor = leerFicha(memoria,f,c,columnas);
+            for (int b=2; b>=0; b--)
+                cout<< ((valor >>b)&1);
+            cout<<" ";
+        }
+
+        cout<<endl;
+    }
+}

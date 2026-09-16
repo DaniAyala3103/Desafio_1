@@ -24,6 +24,9 @@ int main()
     llenarTablero(memoria, filas, columnas);
     mostrarTablero(memoria, filas, columnas);
 
+    cout <<endl<<">>> Tablero en formato binario: "<<endl;
+    mostrarTableroBinario(memoria,filas,columnas);
+
 
 
     int filaJugador, columnaJugador;
